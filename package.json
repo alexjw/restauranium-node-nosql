@@ -1,0 +1,22 @@
+{
+  "name": "restaurantium-node-nosql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon dist/index.js",
+    "serve": "node dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4",
+    "typescript": "^3.9.3",
+    "@types/express": "^4.17.6",
+    "@types/node": "^14.0.5"
+  }
+}
