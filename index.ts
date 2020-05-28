@@ -1,8 +1,33 @@
-import * as http from 'http';
-import express, {NextFunction, Request, Response} from 'express';
+import { ApolloServer } from "apollo-server-express";
+import Express from "express";
+import "reflect-metadata";
+import { buildSchema } from "type-graphql";
+import { connect } from "mongoose";
 
-const App = express();
+// resolvers
+import ClientResolver from './src/resolvers/ClientResolver';
 
-console.log('Server running at http://127.0.0.1:3000/');
 
-App.listen(3000);
+const main = async () => {
+    const schema = await buildSchema({
+        resolvers: [ClientResolver],
+        emitSchemaFile: true,
+        validate: false,
+    });
+
+// create mongoose connection
+    const mongoose = await connect('mongodb://localhost:27017/restaurantium', {useNewUrlParser: true});
+    await mongoose.connection;
+
+
+    const server = new ApolloServer({schema});
+    const app = Express();
+    server.applyMiddleware({app});
+    app.listen({ port: 3000 }, () =>
+        console.log(`🚀 Server ready and listening at ==> http://localhost:3000${server.graphqlPath}`))
+};
+
+main().catch((error)=>{
+    console.log(error, 'error');
+});
+
