@@ -34,6 +34,11 @@ type MealDetail {
   quantity: Float!
 }
 
+input MealDetailInput {
+  ingredient_id: String!
+  quantity: Float!
+}
+
 input MealInput {
   name: String!
 }
@@ -41,7 +46,7 @@ input MealInput {
 type Mutation {
   createClient(data: ClientInput!): Client!
   createIngredient(data: IngredientInput!): Ingredient!
-  createMeal(data: MealInput!): Meal!
+  createMeal(data: MealInput!, details: [MealDetailInput!]!): Meal!
   deleteClient(id: String!): Boolean!
   deleteIngredient(id: String!): Boolean!
   deleteMeal(id: String!): Boolean!

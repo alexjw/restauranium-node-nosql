@@ -19,12 +19,15 @@ export default class MealResolver {
 
     @Mutation(() => Meal)
     async createMeal(
-        @Arg("data"){name}: MealInput
+        @Arg("data") input: MealInput
+        ,@Arg("details", type => [MealDetailInput]) detailInput: MealDetailInput[]
     ): Promise<Meal> {
-        const meal = (await MealModel.create({
-            name
-        })).save();
-        return meal;
+        console.log(detailInput);
+        const meal = await MealModel.create({
+            name: input.name, details: detailInput
+        });
+        //meal.details = detailInput;
+        return meal.save;
     };
 
 
