@@ -6,11 +6,13 @@ import { connect } from "mongoose";
 
 // resolvers
 import ClientResolver from './src/resolvers/ClientResolver';
+import IngredientResolver from "./src/resolvers/IngredientResolver";
+import MealResolver from "./src/resolvers/MealResolver";
 
 
 const main = async () => {
     const schema = await buildSchema({
-        resolvers: [ClientResolver],
+        resolvers: [ClientResolver, IngredientResolver, MealResolver],
         emitSchemaFile: true,
         validate: false,
     });

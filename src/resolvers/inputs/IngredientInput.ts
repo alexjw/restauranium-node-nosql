@@ -1,9 +1,9 @@
 import {Field, InputType} from "type-graphql";
-import {Client} from "../../models/Client";
 import {Length} from "class-validator";
+import {Meal} from "../../models/Meal";
 
 @InputType()
-export default class ClientInput implements Partial<Client> {
+export default class IngredientInput implements Partial<Meal> {
 
     @Field()
     @Length(1, 255)

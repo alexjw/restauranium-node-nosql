@@ -1,6 +1,5 @@
 import {Resolver, Mutation, Arg, Query, InputType, Field} from "type-graphql";
-import { Client, ClientModel } from "../entities/Client";
-import {Length} from "class-validator";
+import { Client, ClientModel } from "../models/Client";
 import ClientInput from "./inputs/ClientInput";
 
 @Resolver()
@@ -18,7 +17,9 @@ export default class ClientResolver {
     };
 
     @Mutation(() => Client)
-    async createClient(@Arg("data"){name}: ClientInput): Promise<Client> {
+    async createClient(
+        @Arg("data"){name}: ClientInput
+    ): Promise<Client> {
         const client = (await ClientModel.create({
             name
         })).save();

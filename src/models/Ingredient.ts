@@ -1,8 +1,8 @@
 import { ObjectType, Field, ID, Int } from "type-graphql";
 import { prop as Property, getModelForClass } from "@typegoose/typegoose";
 
-@ObjectType({ description: "Client Model" })
-export class Client {
+@ObjectType({ description: "Ingredient Model" })
+export class Ingredient {
 
     @Field(()=> ID)
     id: string;
@@ -12,4 +12,4 @@ export class Client {
     name: String;
 }
 
-export const ClientModel = getModelForClass(Client);
+export const IngredientModel = getModelForClass(Ingredient);

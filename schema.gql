@@ -13,12 +13,45 @@ input ClientInput {
   name: String!
 }
 
+"""Ingredient Model"""
+type Ingredient {
+  id: ID!
+  name: String!
+}
+
+input IngredientInput {
+  name: String!
+}
+
+type Meal {
+  details: [MealDetail!]
+  id: ID!
+  name: String!
+}
+
+type MealDetail {
+  ingredient_id: String!
+  quantity: Float!
+}
+
+input MealInput {
+  name: String!
+}
+
 type Mutation {
   createClient(data: ClientInput!): Client!
+  createIngredient(data: IngredientInput!): Ingredient!
+  createMeal(data: MealInput!): Meal!
   deleteClient(id: String!): Boolean!
+  deleteIngredient(id: String!): Boolean!
+  deleteMeal(id: String!): Boolean!
 }
 
 type Query {
   returnAllClients: [Client!]!
+  returnAllIngredients: [Meal!]!
+  returnAllMeals: [Meal!]!
+  returnIngredientMeal(id: String!): Meal!
   returnSingleClient(id: String!): Client!
+  returnSingleMeal(id: String!): Meal!
 }
