@@ -1,20 +1,15 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es2018",
-    "lib": ["es2018", "esnext.asynciterable"],
-    "sourceMap": true,
-    "noImplicitAny": false,
+    "declaration": true,
     "removeComments": true,
-    "preserveConstEnums": true,
-    "checkJs": true,
-    "allowJs": true,
-    "esModuleInterop": true,
-    "outDir": "dist",
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
-  },
-  "exclude": [
-    "node_modules", "dist"
-  ]
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2017",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true
+  }
 }
