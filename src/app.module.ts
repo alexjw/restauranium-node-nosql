@@ -3,6 +3,10 @@ import { ClientModule } from './client/client.module';
 import {Client} from './client/client.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { GraphQLModule } from '@nestjs/graphql';
+import { IngredientModule } from './ingredient/ingredient.module';
+import { Ingredient } from './ingredient/ingredient.entity';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 
 @Module({
   imports: [GraphQLModule.forRoot(
@@ -14,9 +18,12 @@ import { GraphQLModule } from '@nestjs/graphql';
       url: 'mongodb://localhost/restaurantium',
       synchronize: true,
       entities: [
-        Client
+        Client, Ingredient
       ]
     }),
-    ClientModule],
+    ClientModule,
+    IngredientModule],
+  controllers: [AppController],
+  providers: [AppService]
 })
 export class AppModule {}
