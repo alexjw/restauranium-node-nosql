@@ -1,7 +1,7 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { ClientType } from './client.type';
 import { ClientService } from './client.service';
-import { Client } from './client.entity';
+import { Client } from './client.model';
 import { CreateClientInput } from './client.input';
 
 @Resolver(of => ClientType)

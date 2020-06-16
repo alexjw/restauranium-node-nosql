@@ -1,7 +1,7 @@
-import { BaseEntity, Column, Entity, ObjectIdColumn } from 'typeorm';
+import { Column, Entity, ObjectIdColumn } from 'typeorm';
 import {ObjectID} from 'mongodb';
 
-@Entity()
+@Entity({name: "clients"})
 export class Client{
 
   @ObjectIdColumn()

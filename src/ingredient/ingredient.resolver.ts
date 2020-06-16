@@ -2,7 +2,7 @@ import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { IngredientType } from './ingredient.type';
 import { IngredientService } from './ingredient.service';
 import { CreateIngredientInput } from './ingredient.input';
-import { Ingredient } from './ingredient.entity';
+import { Ingredient } from './ingredient.model';
 
 @Resolver(of => IngredientType)
 export class IngredientResolver {

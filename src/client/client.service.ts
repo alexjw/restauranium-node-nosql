@@ -1,26 +1,27 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import {Client} from './client.entity';
-import { Repository } from 'typeorm';
-import { ObjectID } from 'mongodb';
-import { ClientType } from './client.type';
+import {Client} from './client.model';
 import { CreateClientInput } from './client.input';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class ClientService {
 
-  constructor(@InjectRepository(Client) private clientRepository: Repository<Client>) { }
+  // constructor(@InjectRepository(Client) private clientRepository: Repository<Client>) { }
+  constructor(@InjectModel('Client') private clientModel: Model<Client>) { }
 
   getClient(_id: string): Promise<Client> {
-    return this.clientRepository.findOne({_id: new ObjectID(_id)});
+    // return this.clientRepository.findOne({_id: new ObjectID(_id)});
+    return this.clientModel.findById(_id).then();
   }
 
   createClient(clientInput: CreateClientInput): Promise<Client> {
-    const client = this.clientRepository.create(clientInput);
-    return this.clientRepository.save(client);
+    // return this.clientRepository.save(client);
+    return this.clientModel.create(clientInput);
   }
 
   getClients(): Promise<Client[]> {
-    return this.clientRepository.find();
+    // return this.clientRepository.find();
+    return this.clientModel.find().then();
   }
 }

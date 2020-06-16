@@ -7,6 +7,7 @@ import { IngredientModule } from './ingredient/ingredient.module';
 import { Ingredient } from './ingredient/ingredient.entity';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [GraphQLModule.forRoot(
@@ -21,6 +22,7 @@ import { AppService } from './app.service';
         Client, Ingredient
       ]
     }),
+    MongooseModule.forRoot('mongodb://localhost:27017/restaurantium'),
     ClientModule,
     IngredientModule],
   controllers: [AppController],
