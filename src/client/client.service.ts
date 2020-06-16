@@ -12,7 +12,7 @@ export class ClientService {
 
   getClient(_id: string): Promise<Client> {
     // return this.clientRepository.findOne({_id: new ObjectID(_id)});
-    return this.clientModel.findById(_id).then();
+    return this.clientModel.findById(_id).exec();
   }
 
   createClient(clientInput: CreateClientInput): Promise<Client> {
@@ -22,6 +22,6 @@ export class ClientService {
 
   getClients(): Promise<Client[]> {
     // return this.clientRepository.find();
-    return this.clientModel.find().then();
+    return this.clientModel.find().exec();
   }
 }

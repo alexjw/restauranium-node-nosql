@@ -29,6 +29,7 @@
     "@nestjs/mongoose": "7.0.1",
     "apollo-server-express": "^2.14.4",
     "mongoose": "5.7.14",
+    "@typegoose/typegoose": "7.2.0",
     "graphql": "14.5.0",
     "mongodb": "3.5.9",
     "reflect-metadata": "^0.1.13",

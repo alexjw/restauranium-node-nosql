@@ -6,7 +6,6 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { IngredientSchema } from './ingredient.model';
 
 @Module({
-  //imports: [TypeOrmModule.forFeature([Ingredient])],
   imports: [MongooseModule.forFeature([{name: 'Ingredient', schema: IngredientSchema}])],
   providers: [IngredientService, IngredientResolver],
   exports: [IngredientService]
