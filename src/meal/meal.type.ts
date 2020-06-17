@@ -18,8 +18,8 @@ export class MealType {
 @ObjectType('MealDetail')
 export class MealDetailType {
 
-  @Field(type => ID)
-  ingredient_id: IngredientType;
+  @Field(type => IngredientType)
+  ingredient: IngredientType;
 
   @Field()
   quantity: number;

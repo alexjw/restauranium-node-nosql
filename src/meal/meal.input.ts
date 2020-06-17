@@ -1,5 +1,4 @@
 import { Field, InputType } from '@nestjs/graphql';
-import { Ingredient } from '../ingredient/ingredient.model';
 
 @InputType()
 export class CreateMealInput {

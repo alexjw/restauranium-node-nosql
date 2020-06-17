@@ -17,9 +17,13 @@ export class Meal extends Document{
 
   name: string;
 
-  details: {
-    ingredient_id: string,
-    quantity: number
-  }[]
+  details: MealDetail[]
+
+}
+
+export class MealDetail extends Document{
+
+    ingredient_id: string;
+    quantity: number;
 
 }
