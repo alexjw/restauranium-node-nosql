@@ -4,7 +4,7 @@ import { Document } from 'mongoose';
 export const IngredientSchema = new mongoose.Schema({
   name: String,
   measureUnit: String
-});
+}, { timestamps: true });
 
 export class Ingredient extends Document{
 

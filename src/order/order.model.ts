@@ -8,8 +8,9 @@ export const OrderSchema = new mongoose.Schema({
     _id: false,
     meal: MealSchema,
     quantity: Number
-  }]
-});
+  }],
+  client_id: {type: Schema.Types.ObjectId, ref: 'Client', required: false}
+}, { timestamps: true });
 
 export class Order extends Document{
 
@@ -20,6 +21,8 @@ export class Order extends Document{
   details: {
     meal: Meal,
     quantity: number
-  }[]
+  }[];
+
+  client_id?: string;
 
 }

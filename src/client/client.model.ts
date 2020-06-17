@@ -4,7 +4,7 @@ import { Document } from 'mongoose';
 export const ClientSchema = new mongoose.Schema({
   firstName: String,
   lastName: String
-});
+}, { timestamps: true });
 
 export class Client extends Document{
 

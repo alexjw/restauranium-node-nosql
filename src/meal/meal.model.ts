@@ -9,7 +9,7 @@ export const MealSchema = new mongoose.Schema({
     ingredient_id: {type: Schema.Types.ObjectId, ref: 'Ingredient'},
     quantity: Number
   }]
-});
+}, { timestamps: true });
 
 export class Meal extends Document{
 

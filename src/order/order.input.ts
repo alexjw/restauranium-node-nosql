@@ -10,13 +10,24 @@ export class CreateOrderInput {
   @Field(type => [CreateOrderDetailInput], { defaultValue: [] })
   details: CreateOrderDetailInput[];
 
+  @Field({nullable: true})
+  client_id: string;
+
+}
+
+@InputType()
+export class CreateMealInputForOrder extends CreateMealInput {
+
+  @Field()
+  _id: string;
+
 }
 
 @InputType()
 export class CreateOrderDetailInput {
 
   @Field()
-  meal: CreateMealInput;
+  meal: CreateMealInputForOrder;
 
   @Field()
   quantity: number;
