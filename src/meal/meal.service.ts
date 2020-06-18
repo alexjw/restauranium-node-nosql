@@ -13,7 +13,9 @@ export class MealService {
     return this.mealModel.findById(_id).exec();
   }
 
-  getMeals(): Promise<Meal[]> {
+  getMeals(ids?: string[]): Promise<Meal[]> {
+    if(ids)
+      return this.mealModel.find({_id: {$in: ids}}).exec();
     return this.mealModel.find().exec();
   }
 

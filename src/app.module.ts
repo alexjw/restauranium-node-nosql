@@ -7,6 +7,7 @@ import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { MealModule } from './meal/meal.module';
 import { OrderModule } from './order/order.module';
+import { ItemModule } from './item/item.module';
 
 @Module({
   imports: [GraphQLModule.forRoot(
@@ -17,7 +18,8 @@ import { OrderModule } from './order/order.module';
     ClientModule,
     IngredientModule,
     MealModule,
-    OrderModule],
+    OrderModule,
+    ItemModule],
   controllers: [AppController],
   providers: [AppService]
 })

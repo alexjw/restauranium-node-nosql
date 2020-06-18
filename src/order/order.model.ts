@@ -6,23 +6,30 @@ export const OrderSchema = new mongoose.Schema({
   total: Number,
   details: [{
     _id: false,
-    meal: MealSchema,
+    meal: { type: MealSchema, required: false },
     quantity: Number
   }],
   client_id: {type: Schema.Types.ObjectId, ref: 'Client', required: false}
 }, { timestamps: true });
 
-export class Order extends Document{
+export class OrderInterface extends Document {
 
   _id: string;
 
-  name: string;
+  total: number;
 
   details: {
-    meal: Meal,
-    quantity: number
+    meal?: Meal,
+    quantity: number,
+    /*additional_info?: {
+      ingredient_id: string,
+      quantity: number,
+      type: string
+    }[]*/
   }[];
 
   client_id?: string;
 
 }
+
+export const OrderModelConstructor = mongoose.model<OrderInterface>('Order', OrderSchema);

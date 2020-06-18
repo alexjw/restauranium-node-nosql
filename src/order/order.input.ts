@@ -27,7 +27,7 @@ export class CreateMealInputForOrder extends CreateMealInput {
 export class CreateOrderDetailInput {
 
   @Field()
-  meal: CreateMealInputForOrder;
+  meal_id: string;
 
   @Field()
   quantity: number;
