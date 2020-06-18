@@ -10,6 +10,9 @@ export class MealType {
   @Field()
   name: string;
 
+  @Field(type => [String], { nullable: true })
+  sizes: string[];
+
   @Field(type => [MealDetailType])
   details: MealDetailType[];
 

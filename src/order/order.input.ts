@@ -16,18 +16,16 @@ export class CreateOrderInput {
 }
 
 @InputType()
-export class CreateMealInputForOrder extends CreateMealInput {
-
-  @Field()
-  _id: string;
-
-}
-
-@InputType()
 export class CreateOrderDetailInput {
 
-  @Field()
+  @Field({nullable: true})
   meal_id: string;
+
+  @Field({nullable: true})
+  item_id: string;
+
+  @Field({nullable: true})
+  size: string;
 
   @Field()
   quantity: number;

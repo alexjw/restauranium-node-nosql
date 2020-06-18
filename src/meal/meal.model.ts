@@ -4,6 +4,7 @@ import { Client } from '../client/client.model';
 
 export const MealSchema = new mongoose.Schema({
   name: String,
+  sizes: { type: [String], required: false },
   details: [{
     _id: false,
     ingredient_id: {type: Schema.Types.ObjectId, ref: 'Ingredient'},
@@ -16,6 +17,8 @@ export class Meal extends Document{
   _id: string;
 
   name: string;
+
+  sizes: string[];
 
   details: MealDetail[]
 

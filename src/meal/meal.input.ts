@@ -6,6 +6,9 @@ export class CreateMealInput {
   @Field()
   name: string;
 
+  @Field(type => [String], { nullable: true })
+  sizes: string[];
+
   @Field(type => [CreateMealDetailInput], { defaultValue: [] })
   details: CreateMealDetailInput[];
 
