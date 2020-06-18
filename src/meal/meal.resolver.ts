@@ -30,7 +30,7 @@ export class MealResolver {
 @Resolver(of => MealDetailType)
 export class MealDetailResolver {
 
-  constructor(private mealService: MealService, private ingredientService: IngredientService) { }
+  constructor(private ingredientService: IngredientService) { }
 
   @ResolveField()
   ingredient(@Parent() mealDetail: MealDetail): Promise<Ingredient> {

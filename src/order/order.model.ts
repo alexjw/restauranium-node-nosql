@@ -8,7 +8,7 @@ export const OrderSchema = new mongoose.Schema({
   details: [{
     _id: false,
     meal: { type: MealSchema, required: false },
-    item: { type: Schema.Types.ObjectId, ref: 'Item', required: false },
+    item_id: { type: Schema.Types.ObjectId, ref: 'Item', required: false },
     size: { type: String, required: false },
     quantity: Number
   }],
@@ -21,19 +21,23 @@ export class OrderInterface extends Document {
 
   total: number;
 
-  details: {
-    meal?: Meal,
-    item?: string,
-    size?: string,
-    quantity: number,
-    /*additional_info?: {
-      ingredient_id: string,
-      quantity: number,
-      type: string
-    }[]*/
-  }[];
+  details: OrderDetail[];
 
   client_id?: string;
+
+}
+
+export class OrderDetail  {
+
+  meal?: Meal;
+  item_id?: string;
+  size?: string;
+  quantity: number;
+  /*additional_info?: {
+    ingredient_id: string,
+    quantity: number,
+    type: string
+  }[]*/
 
 }
 

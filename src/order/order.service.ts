@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from "mongoose";
-import { OrderInterface, OrderModelConstructor } from './order.model';
+import { OrderDetail, OrderInterface, OrderModelConstructor } from './order.model';
 import { CreateOrderInput } from './order.input';
 import { MealService } from '../meal/meal.service';
 
@@ -27,12 +27,16 @@ export class OrderService {
         if(createOrderInput.client_id)
           order.client_id = createOrderInput.client_id;
         order.details = [];
-        createOrderInput.details.map(detail => {
-          order.details.push(
-            {
-              meal: meals.filter(meal => meal._id)[0],
-              quantity: detail.quantity
-            });
+        createOrderInput.details.forEach(detail => {
+          const theObject: OrderDetail = {quantity: detail.quantity};
+          if(detail.meal_id)
+            theObject.meal = meals.filter(meal => meal._id)[0];
+          if(detail.item_id)
+            theObject.item_id = detail.item_id;
+          if(detail.size)
+            theObject.size = detail.size;
+          console.log(theObject);
+          order.details.push(theObject);
         });
         return this.orderRepository.create(order);
       });
