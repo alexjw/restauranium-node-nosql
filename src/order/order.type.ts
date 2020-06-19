@@ -2,6 +2,7 @@ import { Field, ID, ObjectType, } from '@nestjs/graphql';
 import { MealType } from '../meal/meal.type';
 import { ClientType } from '../client/client.type';
 import { ItemType } from '../item/item.type';
+import { IngredientType } from '../ingredient/ingredient.type';
 
 @ObjectType('Order')
 export class OrderType {
@@ -32,7 +33,27 @@ export class OrderDetailType {
   @Field({ nullable: true })
   size: string;
 
+  @Field(type => [AdditionalMealInfoType], {nullable: true})
+  additional_meal_info: AdditionalMealInfoType[];
+
   @Field()
   quantity: number;
+
+}
+
+@ObjectType('AdditionalMealInfo')
+export class AdditionalMealInfoType {
+
+  @Field(type => IngredientType)
+  ingredient: IngredientType;
+
+  @Field()
+  quantity: number;
+
+  @Field()
+  price: number;
+
+  @Field()
+  difference: string;
 
 }

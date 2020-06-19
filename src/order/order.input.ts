@@ -1,5 +1,4 @@
-import { Field, InputType } from '@nestjs/graphql';
-import { CreateMealInput } from '../meal/meal.input';
+import { Field, InputType, ObjectType } from '@nestjs/graphql';
 
 @InputType()
 export class CreateOrderInput {
@@ -27,7 +26,27 @@ export class CreateOrderDetailInput {
   @Field({nullable: true})
   size: string;
 
+  @Field(type => [AdditionalMealInfoInput], {nullable: true})
+  additional_meal_info: AdditionalMealInfoInput[];
+
   @Field()
   quantity: number;
+
+}
+
+@InputType()
+export class AdditionalMealInfoInput {
+
+  @Field()
+  ingredient_id: string;
+
+  @Field()
+  quantity: number;
+
+  @Field()
+  price: number;
+
+  @Field()
+  difference: string;
 
 }
