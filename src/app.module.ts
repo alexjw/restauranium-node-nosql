@@ -12,7 +12,8 @@ import { ItemModule } from './item/item.module';
 @Module({
   imports: [GraphQLModule.forRoot(
     {
-      autoSchemaFile: true
+      autoSchemaFile: true,
+      installSubscriptionHandlers: true
     }),
     MongooseModule.forRoot('mongodb://localhost:27017/restaurantium'),
     ClientModule,

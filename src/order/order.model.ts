@@ -14,7 +14,7 @@ export const OrderSchema = new mongoose.Schema({
     additional_meal_info: [{
       _id: false,
       ingredient_id: {type: Schema.Types.ObjectId, ref: 'Ingredient'},
-      difference: String,
+      difference: String,   // This refers to Plus or Minus
       price: Number,
       quantity: Number,
       required: false
