@@ -25,6 +25,15 @@ export class IngredientResolver {
     return this.ingredientService.deleteIngredient(_id).then(result => Boolean(result.deletedCount));
   }
 
+  @Mutation(returns => IngredientType)
+  editIngredient(@Args('_id') _id: string, @Args({name: 'name', nullable: true}) name: string, @Args({name: 'measureUnit', nullable: true}) measureUnit: string) {
+    return this.ingredientService.getIngredient(_id).then(ingredient => {
+      ingredient.name = name || ingredient.measureUnit;
+      ingredient.measureUnit = measureUnit || ingredient.measureUnit;
+      return ingredient.save();
+    })
+  }
+
   @Query(returns => IngredientType)
   ingredient(@Args('_id') _id: string): Promise<Ingredient> {
     return this.ingredientService.getIngredient(_id);
