@@ -20,6 +20,11 @@ export class IngredientResolver {
     });
   }
 
+  @Mutation(returns => Boolean)
+  deleteIngredient(@Args('_id') _id: string) {
+    return this.ingredientService.deleteIngredient(_id).then(result => Boolean(result.deletedCount));
+  }
+
   @Query(returns => IngredientType)
   ingredient(@Args('_id') _id: string): Promise<Ingredient> {
     return this.ingredientService.getIngredient(_id);

@@ -26,4 +26,8 @@ export class IngredientService {
     return this.ingredientModel.findById(mealDetail.ingredient_id).exec();
   }
 
+  deleteIngredient(_id: string) {
+    return this.ingredientModel.deleteOne({_id});
+  }
+
 }
