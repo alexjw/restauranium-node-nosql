@@ -23,4 +23,9 @@ export class ClientResolver {
   createClient(@Args('createClientInput') createClientInput: CreateClientInput): Promise<Client> {
     return this.clientService.createClient(createClientInput);
   }
+
+  @Mutation(returns => Boolean)
+  deleteClient(@Args('_id') _id: string) {
+    return this.clientService.deleteClient(_id).then(result => Boolean(result.deletedCount));
+  }
 }

@@ -21,4 +21,8 @@ export class ClientService {
   getClients(): Promise<Client[]> {
     return this.clientModel.find().exec();
   }
+
+  deleteClient(_id: string) {
+    return this.clientModel.deleteOne({_id});
+  }
 }
